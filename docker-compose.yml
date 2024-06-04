@@ -1,0 +1,35 @@
+version: '3.4'
+
+networks:
+  backend:
+
+services:
+  customerapi:
+    image: ${DOCKER_REGISTRY-}customerapi
+    build:
+      context: .
+      dockerfile: CustomerApi/Dockerfile
+    networks:
+      - backend
+    ports:
+      - 8002:8080
+
+  ordersapi:
+    image: ${DOCKER_REGISTRY-}ordersapi
+    build:
+      context: .
+      dockerfile: OrdersApi/Dockerfile
+    networks:
+      - backend
+    ports:
+      - 8003:8080
+
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+    networks:
+      - backend
+    ports:
+      - 8004:8080

@@ -1,0 +1,32 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/customer",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "customerapi",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/customer"
+    },
+    {
+      "UpstreamPathTemplate": "/api/order",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ordersapi",
+          "Port": 8080
+        }
+      ],
+      "DownstreamPathTemplate": "/api/order"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:8004"
+  }
+
+}
